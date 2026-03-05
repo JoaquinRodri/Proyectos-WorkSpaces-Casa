@@ -131,6 +131,37 @@ public class Main {
 			
 		}
 		
+		
+		/*
+		 *System.out.println("Seleciona el valor a editar:");
+			System.out.println("1. Nombre.");
+			System.out.println("2. Posicion.");
+			System.out.println("3. Estatura.");
+			int opcion = sc.nexLine();
+			Jugador aMod = plantilla.get(dorsal);
+			
+			switch (opcion) {
+		case 1:
+			System.out.println("Introduce su nuevo nombre:");
+			String nombre = sc.nextLine();
+			aMod.setNombre(nombre);
+			break;
+		case 2:
+			System.out.println("Introduce su nueva posicion:");
+			Posicion p = Posicion.valueOf(sc.nextLine());
+			aMod.setPosicion(p);
+			break;
+		case 3:
+			System.out.println("Introduce su nueva estatura:");
+			float estatu = Float.ValueOf(sc.nextLine());
+			aMod.setEstatura(estatu);
+			break;
+		default:
+			break;
+		}
+			 */
+		
+		
 		return false;
 	}
 	
