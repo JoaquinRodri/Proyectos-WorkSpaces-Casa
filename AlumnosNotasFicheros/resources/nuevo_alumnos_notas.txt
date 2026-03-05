@@ -1,0 +1,31 @@
+Alumno: 123 Arturo Perez: 1ESO
+Matematicas: 4.0
+Sociales: 9.0
+Historia: 7.0
+Ed. Fisica: 9.0
+Literatura: 6.0
+Asignaturas aprobadas: 4
+
+Alumno: 124 Monica Gonzalez: 2ESO
+Matematicas: 3.0
+Historia: 8.0
+Literatura: 5.0
+Asignaturas aprobadas: 1
+
+Alumno: 125 Estefania Moreno Gamero: 3ESO
+Sociales: 5.0
+Historia: 10.0
+Ed. Fisica: 8.0
+Asignaturas aprobadas: 2
+
+Ed. Fisica --> aprobados: 2 Sobresalientes: 0
+Historia --> aprobados: 3 Sobresalientes: 1
+Literatura --> aprobados: 1 Sobresalientes: 0
+Matematicas --> aprobados: 0 Sobresalientes: 0
+Sociales --> aprobados: 1 Sobresalientes: 0
+
+Lista de Alumnos con todas las asignaturas aprobadas
+125-Estefania Moreno Gamero-3ESO,
+
+Lista de Alumnos con todas las asignaturas suspensas
+

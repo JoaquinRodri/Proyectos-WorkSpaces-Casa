@@ -1,0 +1,2 @@
+Nombre: joaquin
+Edad: 28

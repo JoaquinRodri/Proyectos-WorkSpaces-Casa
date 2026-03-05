@@ -1,0 +1,10 @@
+ID:105
+FECHA:2026-02-26
+CLIENTE:NOMBRE=Juan Perez;EMAIL=juan@email.com;DIRECCION=Calle Mayor 10
+TOTAL:259.99
+------------------------------------------------------------------------------------------
+ID:106
+FECHA:2026-02-27
+CLIENTE:NOMBRE=Ana Lopez;EMAIL=ana@email.com;DIRECCION=Avenida Sol 25
+TOTAL:120.5
+------------------------------------------------------------------------------------------
