@@ -43,7 +43,7 @@ public class Triangulo extends Figura{
 
 	@Override
 	public Float getArea() {
-		return getBase()*getAltura();
+		return (getBase()*getAltura())/2;
 	}
 
 
