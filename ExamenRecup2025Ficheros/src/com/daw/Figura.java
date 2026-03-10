@@ -68,6 +68,8 @@ public abstract class Figura implements InterfazFigura{
 
 	@Override
 	public abstract Float getArea();
+	
+	public abstract String stringGuardar();
 
 	@Override
 	public Float getPeso() {
