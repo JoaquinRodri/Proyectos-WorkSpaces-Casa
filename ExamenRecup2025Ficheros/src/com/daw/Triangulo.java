@@ -49,8 +49,8 @@ public class Triangulo extends Figura{
 
 	public String stringGuardar() {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		return "TRIÁNGULO#CÓDIGO;"+super.getCodigo()+"#COLOR;"+super.getColor()+"#FECHA DE REGISTRO;"+super.getFechaRegistro().format(format)+""
-				+ "#PESO POR CM2;"+super.getPseCmCuadrado()+"#BASE;"+this.getBase()+"#ALTURA;"+this.getAltura();
+		return "TRIÁNGULO#CÓDIGO:"+super.getCodigo()+"#COLOR:"+super.getColor()+"#FECHA DE REGISTRO:"+super.getFechaRegistro().format(format)+""
+				+ "#PESO POR CM2:"+super.getPseCmCuadrado()+"#BASE:"+this.getBase()+"#ALTURA:"+this.getAltura();
 		
 	}
 

@@ -47,8 +47,8 @@ public class Rectangulo extends Figura{
 	
 	public String stringGuardar() {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		return "RECTÁNGULO#CÓDIGO;"+super.getCodigo()+"#COLOR;"+super.getColor()+"#FECHA DE REGISTRO;"+super.getFechaRegistro().format(format)+""
-				+ "#PESO POR CM2;"+super.getPseCmCuadrado()+"#BASE;"+this.getBase()+"#ALTURA;"+this.getAltura();
+		return "RECTÁNGULO#CÓDIGO:"+super.getCodigo()+"#COLOR:"+super.getColor()+"#FECHA DE REGISTRO:"+super.getFechaRegistro().format(format)+""
+				+ "#PESO POR CM2:"+super.getPseCmCuadrado()+"#BASE:"+this.getBase()+"#ALTURA:"+this.getAltura();
 		
 	}
 	

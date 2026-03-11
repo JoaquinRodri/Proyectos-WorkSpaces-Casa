@@ -17,11 +17,12 @@ import java.util.Scanner;
 
 public class Main {
 
-	static final Scanner sc = new Scanner(System.in);
-	static final Map<String, Cuadrado> Cuadrados = new HashMap<String, Cuadrado>();
-	static final Map<String, Rectangulo> Rectangulo = new HashMap<String, Rectangulo>();
-	static final Map<String, Circulo> Circulo = new HashMap<String, Circulo>();
-	static final Map<String, Triangulo> Triangulo = new HashMap<String, Triangulo>();
+	static Scanner sc = new Scanner(System.in);
+	static Map<String, Cuadrado> Cuadrados = new HashMap<String, Cuadrado>();
+	static Map<String, Rectangulo> Rectangulo = new HashMap<String, Rectangulo>();
+	static Map<String, Circulo> Circulo = new HashMap<String, Circulo>();
+	static Map<String, Triangulo> Triangulo = new HashMap<String, Triangulo>();
+	static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 	public static void main(String[] args) {
 		
 				
@@ -194,10 +195,7 @@ public class Main {
 		
 		System.out.println("Nuevo valor del color:");
 		Color color = Color.valueOf(sc.nextLine().toUpperCase());
-		System.out.println("Nueva fecha a registrar:");
-		String fecha = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime fechaF = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaF = LocalDateTime.now();
 		System.out.println("Nuevo peso por cm cuadrados:");
 		Float peso = Float.valueOf(sc.nextLine());
 		System.out.println("Nuevo valor del radio:");
@@ -217,10 +215,7 @@ public class Main {
 			
 		System.out.println("Nuevo valor del color:");
 		Color color = Color.valueOf(sc.nextLine().toUpperCase());
-		System.out.println("Nueva fecha a registrar:");
-		String fecha = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime fechaF = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaF = LocalDateTime.now();
 		System.out.println("Nuevo peso por cm cuadrados:");
 		Float peso = Float.valueOf(sc.nextLine());
 		System.out.println("Nuevo valor del base:");
@@ -255,10 +250,7 @@ public class Main {
 		
 		System.out.println("Nuevo valor del color:");
 		Color color = Color.valueOf(sc.nextLine().toUpperCase());
-		System.out.println("Nueva fecha a registrar:");
-		String fecha = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime fechaF = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaF = LocalDateTime.now();
 		System.out.println("Nuevo peso por cm cuadrados:");
 		Float peso = Float.valueOf(sc.nextLine());
 		System.out.println("Nuevo valor del lado:");
@@ -279,6 +271,7 @@ public class Main {
 		if (Triangulo.containsKey(codigo) || Cuadrados.containsKey(codigo) || Rectangulo.containsKey(codigo) || Circulo.containsKey(codigo)) {
 		
 			System.out.println("Ya existe una figura con código " + codigo);
+			return;
 		}else {
 			if (op == 1) {
 				crearCuadrado(codigo);
@@ -304,10 +297,7 @@ public class Main {
 		
 		System.out.println("Introduce el color:");
 		Color color = Color.valueOf(sc.nextLine().toUpperCase());
-		System.out.println("Introduce la fecha en el siguiente formato (dd/mm/yyyy hh:mm):");
-		String fecha = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime fechaF = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaF = LocalDateTime.now();
 		System.out.println("Introduce su peso por cm cuadrados:");
 		Float pCm2 = Float.valueOf(sc.nextLine());
 		System.out.println("Introduce el valor de la base:");
@@ -324,10 +314,7 @@ public class Main {
 		
 		System.out.println("Introduce el color:");
 		Color color = Color.valueOf(sc.nextLine().toUpperCase());
-		System.out.println("Introduce la fecha en el siguiente formato (dd/mm/yyyy hh:mm):");
-		String fecha = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime fechaF = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaF = LocalDateTime.now();
 		System.out.println("Introduce su peso por cm cuadrados:");
 		Float pCm2 = Float.valueOf(sc.nextLine());
 		System.out.println("Introduce el valor de radio:");
@@ -342,10 +329,7 @@ public class Main {
 		
 		System.out.println("Introduce el color:");
 		Color color = Color.valueOf(sc.nextLine().toUpperCase());
-		System.out.println("Introduce la fecha en el siguiente formato (dd/mm/yyyy hh:mm):");
-		String fecha = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime fechaF = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaF = LocalDateTime.now();
 		System.out.println("Introduce su peso por cm cuadrados:");
 		Float pCm2 = Float.valueOf(sc.nextLine());
 		System.out.println("Introduce el valor de la base:");
@@ -362,10 +346,7 @@ public class Main {
 		
 		System.out.println("Introduce el color:");
 		Color color = Color.valueOf(sc.nextLine().toUpperCase());
-		System.out.println("Introduce la fecha en el siguiente formato (dd/mm/yyyy hh:mm):");
-		String fecha = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime fechaF = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaF = LocalDateTime.now();
 		System.out.println("Introduce su peso por cm cuadrados:");
 		Float pCm2 = Float.valueOf(sc.nextLine());
 		System.out.println("Introduce el valor de lado:");
@@ -385,46 +366,29 @@ public class Main {
 			String linea = leer.readLine();
 			while (linea!=null) {
 				String [] partes = linea.split("#");
+				String pcodigo[] = partes[1].split(":");
+				String pcolor [] = partes[2].split(":");
+				String pfecha [] = partes[3].split(":");
+				String ppeso [] = partes[4].split(":");
+				LocalDateTime fechaF = LocalDateTime.parse(pfecha[1]+":"+pfecha[2], formatter);
+				
 				if (partes[0].equalsIgnoreCase("CUADRADO")) {
-					String pcodigo[] = partes[1].split(";");
-					String pcolor [] = partes[2].split(";");
-					String pfecha [] = partes[3].split(";");
-					String ppeso [] = partes[4].split(";");
-					String plado [] = partes[5].split(";");
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-					LocalDateTime fechaF = LocalDateTime.parse(pfecha[1], formatter);
+					
+					String plado [] = partes[5].split(":");
 					Cuadrado c = new Cuadrado(pcodigo[1], Color.valueOf(pcolor[1]), fechaF, Float.valueOf(ppeso[1]), Float.valueOf(plado[1]));
 					Cuadrados.put(pcodigo[1], c);
 				}else if (partes[0].equalsIgnoreCase("CÍRCULO")) {
-					String pcodigo[] = partes[1].split(";");
-					String pcolor [] = partes[2].split(";");
-					String pfecha [] = partes[3].split(";");
-					String ppeso [] = partes[4].split(";");
-					String pradio [] = partes[5].split(";");
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-					LocalDateTime fechaF = LocalDateTime.parse(pfecha[1], formatter);
+					String pradio [] = partes[5].split(":");
 					Circulo c = new Circulo(pcodigo[1], Color.valueOf(pcolor[1]), fechaF, Float.valueOf(ppeso[1]), Float.valueOf(pradio[1]));
 					Circulo.put(pcodigo[1], c);
 				}else if (partes[0].equalsIgnoreCase("RECTÁNGULO")) {
-					String pcodigo[] = partes[1].split(";");
-					String pcolor [] = partes[2].split(";");
-					String pfecha [] = partes[3].split(";");
-					String ppeso [] = partes[4].split(";");
-					String pbase [] = partes[5].split(";");
-					String palt [] = partes[6].split(";");
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-					LocalDateTime fechaF = LocalDateTime.parse(pfecha[1], formatter);
+					String pbase [] = partes[5].split(":");
+					String palt [] = partes[6].split(":");
 					Rectangulo r = new Rectangulo(pcodigo[1], Color.valueOf(pcolor[1]), fechaF, Float.valueOf(ppeso[1]), Float.valueOf(pbase[1]), Float.valueOf(palt[1]));
 					Rectangulo.put(pcodigo[1], r);
 				}else if (partes[0].equalsIgnoreCase("TRIÁNGULO")) {
-					String pcodigo[] = partes[1].split(";");
-					String pcolor [] = partes[2].split(";");
-					String pfecha [] = partes[3].split(";");
-					String ppeso [] = partes[4].split(";");
-					String pbase [] = partes[5].split(";");
-					String palt [] = partes[6].split(";");
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-					LocalDateTime fechaF = LocalDateTime.parse(pfecha[1], formatter);
+					String pbase [] = partes[5].split(":");
+					String palt [] = partes[6].split(":");
 					Triangulo T = new Triangulo(pcodigo[1], Color.valueOf(pcolor[1]), fechaF, Float.valueOf(ppeso[1]), Float.valueOf(pbase[1]), Float.valueOf(palt[1]));
 					Triangulo.put(pcodigo[1], T);
 				}

@@ -33,8 +33,9 @@ public class Cuadrado extends Figura {
 	
 	public String stringGuardar() {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		return "CUADRADO#CÓDIGO;"+super.getCodigo()+"#COLOR;"+super.getColor()+"#FECHA DE REGISTRO;"+super.getFechaRegistro().format(format)+""
-				+ "#PESO POR CM2;"+super.getPseCmCuadrado()+"#LADO;"+this.getLado();
+		return "CUADRADO#CÓDIGO:"+super.getCodigo()+"#COLOR:"+super.getColor()+"#FECHA DE REGISTRO:"+super.getFechaRegistro().format(format)+""
+				+ "#PESO POR CM2:"+super.getPseCmCuadrado()+"#LADO:"
+						+ ""+this.getLado();
 		
 	}
 	
