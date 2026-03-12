@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,32 +25,47 @@ public class Main {
 		
 		try {
 			BufferedReader leer = new BufferedReader(new FileReader("resources/pedidos.txt"));
+			leer.readLine();
 			String linea = leer.readLine();
 			while (linea != null) {
 				String [] partes = linea.split(";");
 				Integer id_pedido = Integer.valueOf(partes[0]);
-				LocalDate fecha = LocalDate.parse(partes[1], formato);
-				String id_cliente = partes[2];
-				String nombreC = partes[3];
-				String id_prod = partes[4];
-				String nombre_prod = partes[5];
-				String categoria = partes[6];
-				Float precio_p = Float.valueOf(partes[7]);
-				Integer cantidad_l = Integer.valueOf(partes[8]);
-				
-				Cliente c = new Cliente(id_cliente, nombreC);
-				Producto p = new Producto(id_prod, nombre_prod, categoria, precio_p);
-				LineaPedido lP = new LineaPedido(p, cantidad_l);
-				Pedido pe = new Pedido(id_pedido, fecha, c, new ArrayList<LineaPedido>());
 				
 				if (pedidos.containsKey(id_pedido)) {
+					String id_prod = partes[4];
+					String nombre_prod = partes[5];
+					String categoria = partes[6];
+					Float precio_p = Float.valueOf(partes[7]);
+					Integer cantidad_l = Integer.valueOf(partes[8]);
+					
+					Producto p = new Producto(id_prod, nombre_prod, categoria, precio_p);
+					LineaPedido lP = new LineaPedido(p, cantidad_l);
 					
 					Pedido pedid = pedidos.get(id_pedido);
-					pedid.getLineaPedido().add(lP);
+					pedid.addLineaPedido(lP);
+				}else {
+					LocalDate fecha = LocalDate.parse(partes[1], formato);
+					String id_cliente = partes[2];
+					String nombreC = partes[3];
+					String id_prod = partes[4];
+					String nombre_prod = partes[5];
+					String categoria = partes[6];
+					Float precio_p = Float.valueOf(partes[7]);
+					Integer cantidad_l = Integer.valueOf(partes[8]);
+					
+					Cliente c = new Cliente(id_cliente, nombreC);
+					Producto p = new Producto(id_prod, nombre_prod, categoria, precio_p);
+					LineaPedido lP = new LineaPedido(p, cantidad_l);
+					Pedido pe = new Pedido(id_pedido, fecha, c);
+					pedidos.put(id_pedido, pe);
+					pe.addLineaPedido(lP);
+				}
+				if (pedidos.containsKey(id_pedido)) {
+					
+					
 					
 				}else {
-					pedidos.put(id_pedido, pe);
-					pe.getLineaPedido().add(lP);
+					
 				}
 				
 				linea = leer.readLine();

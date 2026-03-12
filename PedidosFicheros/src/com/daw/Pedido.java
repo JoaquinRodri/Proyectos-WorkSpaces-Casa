@@ -1,6 +1,7 @@
 package com.daw;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
@@ -10,12 +11,12 @@ public class Pedido {
 	private Cliente cliente;
 	private List<LineaPedido> lineaPedido;
 	
-	public Pedido(Integer id, LocalDate fecha, Cliente cliente, List<LineaPedido> lineaPedido) {
+	public Pedido(Integer id, LocalDate fecha, Cliente cliente) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
 		this.cliente = cliente;
-		this.lineaPedido = lineaPedido;
+		this.lineaPedido = new ArrayList<LineaPedido>();
 	}
 
 	public Integer getId() {
@@ -49,10 +50,14 @@ public class Pedido {
 	public void setLineaPedido(List<LineaPedido> lineaPedido) {
 		this.lineaPedido = lineaPedido;
 	}
+	
+	public void addLineaPedido(LineaPedido lineaPedido) {
+		this.lineaPedido.add(lineaPedido);
+	}
 
 	@Override
 	public String toString() {
-		return "Pedido [id=" + id + ", fecha=" + fecha + ", cliente=" + cliente + ", lineaPedido=" + lineaPedido + "]";
+		return "Pedido [id=" + id + ", fecha=" + fecha + ", cliente=" + cliente + ", \nlineaPedido=" + lineaPedido + "]";
 	}
 	
 	

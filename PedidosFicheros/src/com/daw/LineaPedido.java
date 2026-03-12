@@ -35,7 +35,7 @@ public class LineaPedido {
 
 	@Override
 	public String toString() {
-		return "LineaPedido [producto=" + producto + ", cantidad=" + cantidad + "]";
+		return "\n\tLineaPedido [producto=" + producto + ", cantidad=" + cantidad + "]";
 	}
 	
 	
