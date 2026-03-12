@@ -1,0 +1,16 @@
+1001;2025-11-01;C001;Ana Torres;P10;Teclado Mecánico;Perifericos;89.99;1
+1001;2025-11-01;C001;Ana Torres;P12;Ratón Gaming;Perifericos;45.50;2
+1001;2025-11-01;C001;Ana Torres;P20;Alfombrilla XL;Perifericos;19.99;1
+1002;2025-11-01;C002;Luis García;P30;Monitor 27";Monitores;249.99;1
+1002;2025-11-01;C002;Luis García;P12;Ratón Gaming;Perifericos;45.50;1
+1003;2025-11-02;C003;Marta López;P50;Portátil Ultralight;Ordenadores;999.99;1
+1003;2025-11-02;C003;Marta López;P11;Hub USB-C;Accesorios;29.90;1
+1003;2025-11-02;C003;Marta López;P60;Base Refrigeradora;Accesorios;34.99;1
+1004;2025-11-02;C004;Carlos Ruiz;P30;Monitor 27";Monitores;249.99;2
+1004;2025-11-02;C004;Carlos Ruiz;P12;Ratón Gaming;Perifericos;45.50;1
+1005;2025-11-03;C001;Ana Torres;P70;SSD 1TB;Componentes;129.99;1
+1005;2025-11-03;C001;Ana Torres;P71;Memoria RAM 16GB;Componentes;89.99;2
+1006;2025-11-03;C005;Elena Navarro;P10;Teclado Mecánico;Perifericos;89.99;1
+1006;2025-11-03;C005;Elena Navarro;P80;Silla Gaming;Mobiliario;199.99;1
+1007;2025-11-03;C006;Pablo Ortega;P90;Tablet 10";Tablets;329.99;1
+1007;2025-11-03;C006;Pablo Ortega;P11;Hub USB-C;Accesorios;29.90;2
