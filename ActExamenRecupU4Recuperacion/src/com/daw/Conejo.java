@@ -1,0 +1,43 @@
+package com.daw;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Conejo extends Animal{
+	
+	private Double peso;
+	private TipoPelaje tipoPelaje;
+	
+	public Conejo(String id, String nombre, LocalDate fechaIngreso, Float edad, Genero genero, Boolean vacunado,
+			Double peso, TipoPelaje tipoPelaje) {
+		super(id, nombre, fechaIngreso, edad, genero, vacunado);
+		this.peso = peso;
+		this.tipoPelaje = tipoPelaje;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+
+	public TipoPelaje getTipoPelaje() {
+		return tipoPelaje;
+	}
+
+	public void setTipoPelaje(TipoPelaje tipoPelaje) {
+		this.tipoPelaje = tipoPelaje;
+	}
+
+	@Override
+	public String getDescripcion() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return this.getNombre()+" - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
+				+ " - EDAD: "+this.getEdad()+" años - VACUNADO: "+(this.getVacunado()? "Si":"No")+ " - PESO: "+this.getPeso()+" - PELAJE: "+this.getTipoPelaje();
+	}
+	
+	
+
+}
