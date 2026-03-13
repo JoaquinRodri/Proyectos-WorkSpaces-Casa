@@ -29,6 +29,7 @@ public class Main {
 		String op = "0";
 		while (!op.equals("5")) {
 			
+			System.out.println("########### REFUGIO DE ADOPTACIÓN #############");
 			System.out.println("1. Agregar Animal.");
 			System.out.println("2. Modificar Animal.");
 			System.out.println("3. Eliminar Animal.");
@@ -39,6 +40,7 @@ public class Main {
 			
 			switch (op) {
 			case "1":
+				System.out.println("########### AGREGAR ANIMAL #############");
 				System.out.println("ELIGE UN ANIMAL:");
 				System.out.println("1. PERRO.");
 				System.out.println("2. GATO.");
@@ -46,10 +48,11 @@ public class Main {
 				System.out.println("4. AVE.");
 				int opAnimal = Integer.valueOf(sc.nextLine());
 				crearAnimal(opAnimal);
-				
+				System.out.println();
 				break;
 				
 			case "2":
+				System.out.println("########### MODIFICAR ANIMAL #############");
 				System.out.println("Introduce el id del animal a modficar");
 				String id = sc.nextLine();
 				if (!perros.containsKey(id) && !gatos.containsKey(id) && !conejos.containsKey(id) && !aves.containsKey(id)) {
@@ -61,6 +64,7 @@ public class Main {
 				break;
 				
 			case "3":
+				System.out.println("########### ELIMINAR ANIMAL #############");
 				System.out.println("Introduce el id del animal a eliminar:");
 				String id1 = sc.nextLine();
 				
@@ -79,19 +83,23 @@ public class Main {
 				}else {
 					System.out.println("EL animal con ID "+id1+" no existe.");
 				}
-				
+				System.out.println();
 				break;
 				
 			case "4":
+				
+				System.out.println("########### LISTA DE TODOS LOS ANIMALES #############\n");
 				List<Animal> ordenar = listaAniamles();
 				Collections.sort(ordenar, new ComparadorFechaYEdad());
 				for (Animal animal : ordenar) {
 					System.out.println(animal.getDescripcion());
 				}
-				
+				System.out.println();
 				break;
 				
 			case "5":
+				
+				System.out.println("########### GUARDADO DE DATOS EN FICHERO #############\n");
 				List<Animal> ordenar2 = listaAniamles();
 				Collections.sort(ordenar2);
 				try {
@@ -100,12 +108,12 @@ public class Main {
 						escribir.write(animal.formatGuardar());
 						escribir.newLine();
 					}
-					
+					System.out.println("Guardando....");
 					escribir.close();
 				} catch (IOException e) {
 					System.out.println("Error al intentar escribir el fichero.");
 				}
-				
+				System.out.println("############ DATOS GUARDADOS CON EXITO ##############");
 				break;
 
 			default:
