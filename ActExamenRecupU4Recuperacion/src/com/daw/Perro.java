@@ -34,8 +34,14 @@ public class Perro extends Animal{
 	@Override
 	public String getDescripcion() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return this.getNombre()+" - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
+		return "PERRO - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
 				+ " - EDAD: "+this.getEdad()+" años - VACUNADO: "+(this.getVacunado()? "Si":"No")+ " - RAZA: "+this.getRaza()+" - NIVEL ENERGIA: "+this.getNivelEnergia();
+	}
+
+	@Override
+	public String formatGuardar() {
+		
+		return "PERRO#ID: "+this.getId()+" #NOMBRE: "+this.getNombre()+" #FECHA INGRESO: "+this.getFechaIngreso().format(Main.formato)+" #EDAD: "+this.getEdad()+" #GENERO: "+this.getGenero()+" #VACUNADO: "+this.getVacunado()+" #RAZA: "+this.getRaza()+" #ENERGIA: "+this.getNivelEnergia().name().toLowerCase();
 	}
 
 	

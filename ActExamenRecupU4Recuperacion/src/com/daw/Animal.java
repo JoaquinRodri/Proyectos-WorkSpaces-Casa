@@ -71,13 +71,14 @@ public abstract class Animal implements Comparable<Animal>, InterfazAnimal{
 
 		
 	public abstract String getDescripcion();
+	public abstract String formatGuardar();
 	
 	@Override
 	public int compareTo(Animal o) {
 		if (this.getNombre().equals(o.getNombre())) {
-			return this.getEdad().compareTo(o.getEdad());
+			return - this.getEdad().compareTo(o.getEdad());
 		}else {
-			return - this.getNombre().compareTo(o.getNombre());
+			return this.getNombre().compareTo(o.getNombre());
 		}
 		
 	}

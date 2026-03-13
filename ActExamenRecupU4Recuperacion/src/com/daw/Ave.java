@@ -44,8 +44,16 @@ public class Ave extends Animal {
 	@Override
 	public String getDescripcion() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return this.getNombre()+" - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
+		return "AVE - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
 				+ " - EDAD: "+this.getEdad()+" años - VACUNADO: "+(this.getVacunado()? "Si":"No")+ " - ESPECIE: "+this.getEspecie()+" - VUELA: "+(this.getPuedeVolar()? "Si":"No");
+	}
+
+
+
+	@Override
+	public String formatGuardar() {
+		
+		return "AVE#ID: "+this.getId()+" #NOMBRE: "+this.getNombre()+" #FECHA INGRESO: "+this.getFechaIngreso().format(Main.formato)+" #EDAD: "+this.getEdad()+" #GENERO: "+this.getGenero()+" #VACUNADO: "+this.getVacunado()+" #ESPECIE: "+this.getEspecie()+" #VUELA: "+this.getPuedeVolar();
 	}
 
 }

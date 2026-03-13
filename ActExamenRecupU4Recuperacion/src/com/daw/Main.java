@@ -1,11 +1,16 @@
 package com.daw;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -21,18 +26,19 @@ public class Main {
 	public static void main(String[] args) {
 		
 		procesarFichero();
-		int op = 0;
-		while (op != 5) {
+		String op = "0";
+		while (!op.equals("5")) {
 			
 			System.out.println("1. Agregar Animal.");
 			System.out.println("2. Modificar Animal.");
 			System.out.println("3. Eliminar Animal.");
 			System.out.println("4. Listar Animales.");
 			System.out.println("5. Salir.");
-			op = Integer.valueOf(sc.nextLine());
+			System.out.println("Seleccione una opcion:");
+			op = sc.nextLine();
 			
 			switch (op) {
-			case 1:
+			case "1":
 				System.out.println("ELIGE UN ANIMAL:");
 				System.out.println("1. PERRO.");
 				System.out.println("2. GATO.");
@@ -43,7 +49,7 @@ public class Main {
 				
 				break;
 				
-			case 2:
+			case "2":
 				System.out.println("Introduce el id del animal a modficar");
 				String id = sc.nextLine();
 				if (!perros.containsKey(id) && !gatos.containsKey(id) && !conejos.containsKey(id) && !aves.containsKey(id)) {
@@ -54,27 +60,56 @@ public class Main {
 				
 				break;
 				
-			case 3:
+			case "3":
 				System.out.println("Introduce el id del animal a eliminar:");
 				String id1 = sc.nextLine();
 				
 				if (perros.containsKey(id1)) {
 					perros.remove(id1);
+					System.out.println("Animal borrado con exito");
 				}else if (gatos.containsKey(id1)) {
 					gatos.remove(id1);
+					System.out.println("Animal borrado con exito");
 				}else if (conejos.containsKey(id1)) {
 					conejos.remove(id1);
+					System.out.println("Animal borrado con exito");
 				}else if (aves.containsKey(id1)) {
 					aves.remove(id1);
+					System.out.println("Animal borrado con exito");
+				}else {
+					System.out.println("EL animal con ID "+id1+" no existe.");
 				}
 				
 				break;
 				
-			case 4:
+			case "4":
+				List<Animal> ordenar = listaAniamles();
+				Collections.sort(ordenar, new ComparadorFechaYEdad());
+				for (Animal animal : ordenar) {
+					System.out.println(animal.getDescripcion());
+				}
+				
+				break;
+				
+			case "5":
+				List<Animal> ordenar2 = listaAniamles();
+				Collections.sort(ordenar2);
+				try {
+					BufferedWriter escribir = new BufferedWriter(new FileWriter("resources/refugio.txt"));
+					for (Animal animal : ordenar2) {
+						escribir.write(animal.formatGuardar());
+						escribir.newLine();
+					}
+					
+					escribir.close();
+				} catch (IOException e) {
+					System.out.println("Error al intentar escribir el fichero.");
+				}
 				
 				break;
 
 			default:
+				System.out.println("Opcion no valida.");
 				break;
 			}
 			
@@ -82,11 +117,25 @@ public class Main {
 		}
 
 	}
+	public static List<Animal> listaAniamles() {
+		List<Animal> aux = new ArrayList<Animal>();
+		aux.addAll(perros.values());
+		aux.addAll(gatos.values());
+		aux.addAll(conejos.values());
+		aux.addAll(aves.values());
+		return aux;
+	}
 	public static void modificarAnimal(String id) {
 		
 		System.out.println("Inserte la edad del animal:");
-		Float edad = Float.valueOf(sc.nextLine());
-		System.out.println("¿Esta vacunado?");
+		Float edad = null;
+		try {
+			edad = Float.valueOf(sc.nextLine());
+		} catch (NumberFormatException e) {
+			System.out.println("El formato de introduccion de datos no es correcto. Valor introducido por defecto 0. El formato es \"1.2\"");
+			edad = 0f;
+		}
+		System.out.println("¿Esta vacunado?(true o false)");
 		Boolean vacunado = Boolean.valueOf(sc.nextLine());
 		
 		if (perros.containsKey(id)) {
@@ -119,27 +168,64 @@ public class Main {
 			System.out.println("Introduce el nombre de animal:");
 			String nombre = sc.nextLine();
 			LocalDate fecha = LocalDate.now();
-			Float edad  = Float.valueOf(sc.nextLine());
-			Genero genero = Genero.valueOf(sc.nextLine());
-			Boolean vacunado = Boolean.valueOf(sc.nextLine().toUpperCase());
+			System.out.println("Introduce la edad del animal:");
+			Float edad;
+			try {
+				edad = Float.valueOf(sc.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("El formato de introduccion de datos no es correcto. Valor introducido por defecto 0. El formato es \"1.2\"");
+				edad = 0f;
+			}
+			System.out.println("Introduce el genero del animal:");
+			Genero genero;
+			try {
+				genero = Genero.valueOf(sc.nextLine().toUpperCase());
+			} catch (IllegalArgumentException e) {
+				System.out.println("Datos no validos, solo puede ser hembra o mayo.");
+				System.out.println("Volviendo al menu....");
+				return;
+			}
+			System.out.println("Introduce si esta vacunado o no el animal (true o false):");
+			Boolean vacunado = Boolean.valueOf(sc.nextLine());
 			
 			if (opAnimal == 1) {
+				System.out.println("Introduce la raza del animal:");
 				String raza = sc.nextLine();
-				NivelEnergia energia = NivelEnergia.valueOf(sc.nextLine());
+				System.out.println("Introduce el nivel de energia del animal:");
+				NivelEnergia energia;
+				try {
+					energia = NivelEnergia.valueOf(sc.nextLine().toUpperCase());
+				} catch (IllegalArgumentException e) {
+					System.out.println("Datos no validos, solo puede ser bajo, medio o alto.");
+					System.out.println("Volviendo al menu....");
+					return;
+				}
 				Perro pe = new Perro(id, nombre, fecha, edad, genero, vacunado, raza, energia);
 				perros.put(id, pe);
 			}else if (opAnimal == 2) {
-				Boolean pelirrojo = Boolean.valueOf(sc.nextLine().toUpperCase());
-				Boolean convive = Boolean.valueOf(sc.nextLine().toUpperCase());
+				System.out.println("¿El animal el pelirrojo? (true o false):");
+				Boolean pelirrojo = Boolean.valueOf(sc.nextLine());
+				System.out.println("¿El animal convive con otros animales? (true o false):");
+				Boolean convive = Boolean.valueOf(sc.nextLine());
 				Gato ga = new Gato(id, nombre, fecha, edad, genero, vacunado, pelirrojo, convive);
 				gatos.put(id, ga);
 			}else if (opAnimal == 3) {
+				System.out.println("Introduce el peso del animal:");
 				Double peso = Double.valueOf(sc.nextLine());
-				TipoPelaje pelaje = TipoPelaje.valueOf(sc.nextLine().toUpperCase());
+				System.out.println("Introduce el tipo de pelaje del animal:");
+				TipoPelaje pelaje;
+				try {
+					pelaje = TipoPelaje.valueOf(sc.nextLine().toUpperCase());
+				} catch (IllegalArgumentException e) {
+					System.out.println("Datos no validos, solo puede ser corto, medio o largo.");
+					return;
+				}
 				Conejo co = new Conejo(id, nombre, fecha, edad, genero, vacunado, peso, pelaje);
 				conejos.put(id, co);
 			}else if (opAnimal == 4) {
+				System.out.println("Introduce al especie del animal:");
 				String especie = sc.nextLine();
+				System.out.println("¿El animal vuela? (true o false):");
 				Boolean vuela = Boolean.valueOf(sc.nextLine());
 				Ave ave = new Ave(id, nombre, fecha, edad, genero, vacunado, especie, vuela);
 				aves.put(id, ave);
