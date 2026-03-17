@@ -72,6 +72,7 @@ public abstract class Animal implements Comparable<Animal>, InterfazAnimal{
 		
 	public abstract String getDescripcion();
 	public abstract String formatGuardar();
+	public abstract String formatoImprimir(); 
 	
 	@Override
 	public int compareTo(Animal o) {

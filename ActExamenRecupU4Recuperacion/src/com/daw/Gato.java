@@ -32,10 +32,16 @@ public class Gato extends Animal{
 	}
 
 	@Override
-	public String getDescripcion() {
+	public String formatoImprimir() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return "GATO - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
 				+ " - EDAD: "+this.getEdad()+" años - VACUNADO: "+(this.getVacunado()? "Si":"No")+ " - PELIRROJO: "+this.getEsPelirrojo()+" - CONVIVE: "+(this.getConViveConOtros()? "Si":"No");
+	}
+	
+	@Override
+	public String getDescripcion() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "GATO - "+this.getNombre()+", "+this.getGenero()+", pelirrojo: "+(this.getEsPelirrojo()?"si":"no")+", convive con otros: "+(this.getConViveConOtros()?"si":"no")+", ingresado el "+this.getFechaIngreso().format(formato)+", edad: "+this.getEdad()+" años, vacunado: "+(this.getVacunado()?"si":"no");
 	}
 
 	@Override

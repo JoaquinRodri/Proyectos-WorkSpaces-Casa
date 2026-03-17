@@ -31,11 +31,17 @@ public class Perro extends Animal{
 		this.nivelEnergia = nivelEnergia;
 	}
 
-	@Override
-	public String getDescripcion() {
+
+	public String formatoImprimir() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return "PERRO - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
 				+ " - EDAD: "+this.getEdad()+" años - VACUNADO: "+(this.getVacunado()? "Si":"No")+ " - RAZA: "+this.getRaza()+" - NIVEL ENERGIA: "+this.getNivelEnergia();
+	}
+	
+	@Override
+	public String getDescripcion() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "PERRO - "+this.getNombre()+", "+this.getGenero()+", raza "+this.getRaza()+", nivel de energía: "+this.getNivelEnergia().toString().toLowerCase()+", ingresado el "+this.getFechaIngreso().format(formato)+", edad: "+this.getEdad()+" años, vacunado: "+(this.getVacunado()?"si":"no");
 	}
 
 	@Override

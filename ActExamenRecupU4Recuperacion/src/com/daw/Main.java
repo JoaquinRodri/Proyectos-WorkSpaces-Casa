@@ -46,6 +46,7 @@ public class Main {
 				System.out.println("2. GATO.");
 				System.out.println("3. CONEJO.");
 				System.out.println("4. AVE.");
+				System.out.println("Selecciona una opcion:");
 				int opAnimal = Integer.valueOf(sc.nextLine());
 				crearAnimal(opAnimal);
 				System.out.println();
@@ -89,7 +90,7 @@ public class Main {
 			case "4":
 				
 				System.out.println("########### LISTA DE TODOS LOS ANIMALES #############\n");
-				List<Animal> ordenar = listaAniamles();
+				List<Animal> ordenar = listaAnimales();
 				Collections.sort(ordenar, new ComparadorFechaYEdad());
 				for (Animal animal : ordenar) {
 					System.out.println(animal.getDescripcion());
@@ -100,7 +101,7 @@ public class Main {
 			case "5":
 				
 				System.out.println("########### GUARDADO DE DATOS EN FICHERO #############\n");
-				List<Animal> ordenar2 = listaAniamles();
+				List<Animal> ordenar2 = listaAnimales();
 				Collections.sort(ordenar2);
 				try {
 					BufferedWriter escribir = new BufferedWriter(new FileWriter("resources/refugio.txt"));
@@ -125,7 +126,7 @@ public class Main {
 		}
 
 	}
-	public static List<Animal> listaAniamles() {
+	public static List<Animal> listaAnimales() {
 		List<Animal> aux = new ArrayList<Animal>();
 		aux.addAll(perros.values());
 		aux.addAll(gatos.values());
@@ -143,8 +144,8 @@ public class Main {
 			System.out.println("El formato de introduccion de datos no es correcto. Valor introducido por defecto 0. El formato es \"1.2\"");
 			edad = 0f;
 		}
-		System.out.println("¿Esta vacunado?(true o false)");
-		Boolean vacunado = Boolean.valueOf(sc.nextLine());
+		System.out.println("¿Esta vacunado?");
+		Boolean vacunado = sc.nextLine().equalsIgnoreCase("si")? true:false;
 		
 		if (perros.containsKey(id)) {
 			Perro p = perros.get(id);
@@ -162,6 +163,8 @@ public class Main {
 			Ave av = aves.get(id);
 			av.setEdad(edad);
 			av.setVacunado(vacunado);
+		}else {
+			System.out.println("El animal con ID "+id+" no existe.");
 		}
 		
 	}
@@ -193,8 +196,8 @@ public class Main {
 				System.out.println("Volviendo al menu....");
 				return;
 			}
-			System.out.println("Introduce si esta vacunado o no el animal (true o false):");
-			Boolean vacunado = Boolean.valueOf(sc.nextLine());
+			System.out.println("Introduce si esta vacunado o no el animal:");
+			Boolean vacunado = sc.nextLine().equalsIgnoreCase("si")? true:false;
 			
 			if (opAnimal == 1) {
 				System.out.println("Introduce la raza del animal:");
@@ -211,10 +214,10 @@ public class Main {
 				Perro pe = new Perro(id, nombre, fecha, edad, genero, vacunado, raza, energia);
 				perros.put(id, pe);
 			}else if (opAnimal == 2) {
-				System.out.println("¿El animal el pelirrojo? (true o false):");
-				Boolean pelirrojo = Boolean.valueOf(sc.nextLine());
-				System.out.println("¿El animal convive con otros animales? (true o false):");
-				Boolean convive = Boolean.valueOf(sc.nextLine());
+				System.out.println("¿El animal el pelirrojo?:");
+				Boolean pelirrojo = sc.nextLine().equalsIgnoreCase("si")? true:false;
+				System.out.println("¿El animal convive con otros animales?:");
+				Boolean convive = sc.nextLine().equalsIgnoreCase("si")? true:false;
 				Gato ga = new Gato(id, nombre, fecha, edad, genero, vacunado, pelirrojo, convive);
 				gatos.put(id, ga);
 			}else if (opAnimal == 3) {
@@ -233,8 +236,8 @@ public class Main {
 			}else if (opAnimal == 4) {
 				System.out.println("Introduce al especie del animal:");
 				String especie = sc.nextLine();
-				System.out.println("¿El animal vuela? (true o false):");
-				Boolean vuela = Boolean.valueOf(sc.nextLine());
+				System.out.println("¿El animal vuela?:");
+				Boolean vuela = sc.nextLine().equalsIgnoreCase("si")? true:false;
 				Ave ave = new Ave(id, nombre, fecha, edad, genero, vacunado, especie, vuela);
 				aves.put(id, ave);
 			}

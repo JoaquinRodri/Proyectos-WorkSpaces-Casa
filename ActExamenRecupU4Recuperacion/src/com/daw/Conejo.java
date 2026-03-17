@@ -32,10 +32,16 @@ public class Conejo extends Animal{
 	}
 
 	@Override
-	public String getDescripcion() {
+	public String formatoImprimir() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return "CONEJO - ID: "+this.getId()+" - NOMBRE: "+this.getNombre()+" - GÉNERO: "+this.getGenero()+" - INGRESO: "+this.getFechaIngreso().format(formato)
 				+ " - EDAD: "+this.getEdad()+" años - VACUNADO: "+(this.getVacunado()? "Si":"No")+ " - PESO: "+this.getPeso()+" - PELAJE: "+this.getTipoPelaje();
+	}
+	
+	@Override
+	public String getDescripcion() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "CONEJO - "+this.getNombre()+", "+this.getGenero()+", peso: "+this.getPeso()+"kg, pelaje: "+this.getTipoPelaje()+", ingresado el "+this.getFechaIngreso().format(formato)+", edad: "+this.getEdad()+" años, vacunado: "+(this.getVacunado()?"si":"no");
 	}
 
 	@Override
