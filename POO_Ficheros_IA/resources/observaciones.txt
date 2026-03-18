@@ -1,0 +1,14 @@
+L002#Incluye contenido descargable promocional
+L003#Las gafas VR deben ajustarse antes de jugar
+L004#Faltan dos cartas de repuesto
+L005#Funciona correctamente en equipos de gama media
+L006#Presenta pequeños arañazos en la carátula
+L007#Edición con mapa incluido
+L008#Disco en perfecto estado
+L008#Mando adicional recomendado para jugar en multijugador
+L009#Necesita espacio libre amplio para una experiencia segura
+L010#Muy solicitado los fines de semana
+L011#Incluye manual de instalación impreso
+L012#No recomendado para jugadores sensibles al mareo
+L013#Caja algo desgastada por el uso
+L014#Versión compatible solo con PS4
